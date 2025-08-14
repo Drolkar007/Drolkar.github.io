@@ -5,48 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My GitHub Pages</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+        /* Reset default styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #007acc;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
-            padding: 20px 0;
-            font-size: 24px;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #0f2027);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        main {
-            padding: 40px 20px;
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
+
         h1 {
-            color: #333;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in-out;
         }
+
         p {
-            color: #666;
-            font-size: 18px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeIn 3s ease-in-out;
         }
+
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
         footer {
-            background-color: #f1f1f1;
-            padding: 10px;
-            font-size: 14px;
-            color: #555;
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
-    </style>
-</head>
-<body>
-    <header>
-        My Personal Homepage
-    </header>
-    <main>
-        <h1>Hello, welcome to my GitHub Pages site!</h1>
-        <p>This is my first webpage hosted on GitHub Pages.</p>
-        <p>I will share more content here in the future~</p>
-    </main>
-    <footer>
-        &copy; 2025 Created by Me | Hosted with GitHub Pages
-    </footer>
-</body>
-</html>
+
+        @keyframes fadeIn
