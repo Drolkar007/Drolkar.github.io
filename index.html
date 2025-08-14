@@ -6,7 +6,6 @@
     <title>GitHub Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 基础重置 */
         * {
             margin: 0;
             padding: 0;
@@ -21,105 +20,42 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            padding: 20px;
             line-height: 1.6;
         }
 
-        /* 安全的背景样式 */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(88, 166, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(35, 134, 54, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
-            z-index: -1;
-        }
-
-        /* 网格背景（备用） */
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(48, 54, 61, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(48, 54, 61, 0.2) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* 主容器 */
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 500px;
-            padding: 20px;
         }
 
-        /* 卡片样式 */
         .card {
-            background: rgba(22, 27, 34, 0.95);
+            background: #161b22;
             border: 1px solid #30363d;
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 40px 30px;
-            box-shadow: 
-                0 8px 24px rgba(0, 0, 0, 0.4),
-                0 2px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #58a6ff, #79c0ff);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
+            transition: all 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 12px 32px rgba(0, 0, 0, 0.5),
-                0 4px 12px rgba(0, 0, 0, 0.3);
+            border-color: #58a6ff;
         }
 
-        /* 标题样式 */
         .title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #58a6ff, #79c0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: none;
+            color: #58a6ff;
         }
 
-        /* 副标题 */
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #8b949e;
             margin-bottom: 25px;
             font-weight: 400;
         }
 
-        /* 内容区域 */
         .content {
             font-size: 1rem;
             color: #8b949e;
@@ -127,13 +63,11 @@
             line-height: 1.7;
         }
 
-        /* 按钮组 */
         .button-group {
             display: flex;
             gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -159,7 +93,6 @@
 
         .btn-primary:hover {
             background: #2ea043;
-            transform: translateY(-2px);
         }
 
         .btn-secondary {
@@ -170,74 +103,15 @@
 
         .btn-secondary:hover {
             background: #30363d;
-            transform: translateY(-2px);
         }
 
-        /* 统计信息 */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #58a6ff;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: #8b949e;
-            margin-top: 5px;
-        }
-
-        /* 装饰元素 */
-        .decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(88, 166, 255, 0.1), transparent);
-            filter: blur(20px);
-            z-index: -1;
-        }
-
-        .decoration-1 {
-            top: -50px;
-            right: -50px;
-        }
-
-        .decoration-2 {
-            bottom: -50px;
-            left: -50px;
-            background: radial-gradient(circle, rgba(35, 134, 54, 0.1), transparent);
-        }
-
-        /* 响应式设计 */
         @media (max-width: 600px) {
-            .container {
-                width: 95%;
-                padding: 10px;
-            }
-            
-            .card {
-                padding: 30px 20px;
-            }
-            
             .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .button-group {
@@ -249,71 +123,12 @@
                 width: 100%;
                 max-width: 250px;
             }
-            
-            .stats {
-                gap: 20px;
-            }
-        }
-
-        /* 加载动画 */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            color: #8b949e;
-        }
-
-        .spinner {
-            border: 3px solid #30363d;
-            border-top: 3px solid #58a6ff;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 错误提示 */
-        .error-message {
-            display: none;
-            background: rgba(248, 81, 73, 0.1);
-            border: 1px solid rgba(248, 81, 73, 0.3);
-            color: #f85149;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <!-- 背景层 -->
-    <div class="background"></div>
-    <div class="grid-background"></div>
-
-    <!-- 主容器 -->
     <div class="container">
-        <!-- 错误提示 -->
-        <div class="error-message" id="errorMessage"></div>
-
-        <!-- 加载动画 -->
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <div>Loading...</div>
-        </div>
-
-        <!-- 主卡片 -->
-        <div class="card" id="mainCard">
-            <!-- 装饰元素 -->
-            <div class="decoration decoration-1"></div>
-            <div class="decoration decoration-2"></div>
-            
-            <!-- 内容 -->
+        <div class="card">
             <h1 class="title">GITHUB HOMEPAGE</h1>
             <h2 class="subtitle">Welcome to My GitHub Pages</h2>
             <p class="content">
@@ -322,7 +137,6 @@
                 Feel free to explore and connect!
             </p>
             
-            <!-- 按钮组 -->
             <div class="button-group">
                 <a href="https://github.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i> View Profile
@@ -331,150 +145,22 @@
                     <i class="fas fa-code-branch"></i> Repository
                 </a>
             </div>
-            
-            <!-- 统计信息 -->
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-value">42</span>
-                    <span class="stat-label">Repos</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">128</span>
-                    <span class="stat-label">Stars</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">56</span>
-                    <span class="stat-label">Followers</span>
-                </div>
-            </div>
         </div>
     </div>
 
     <script>
-        // 安全的JavaScript执行
-        document.addEventListener('DOMContentLoaded', function() {
-            'use strict';
-            
-            // 错误处理
-            window.addEventListener('error', function(e) {
-                console.error('Page error:', e.error);
-                showError('An error occurred. Some features may not work properly.');
-            });
-            
-            // 显示错误信息
-            function showError(message) {
-                const errorEl = document.getElementById('errorMessage');
-                if (errorEl) {
-                    errorEl.textContent = message;
-                    errorEl.style.display = 'block';
-                }
-            }
-            
-            // 显示加载状态
-            function showLoading() {
-                const loadingEl = document.getElementById('loading');
-                const cardEl = document.getElementById('mainCard');
-                if (loadingEl && cardEl) {
-                    loadingEl.style.display = 'block';
-                    cardEl.style.display = 'none';
-                }
-            }
-            
-            // 隐藏加载状态
-            function hideLoading() {
-                const loadingEl = document.getElementById('loading');
-                const cardEl = document.getElementById('mainCard');
-                if (loadingEl && cardEl) {
-                    loadingEl.style.display = 'none';
-                    cardEl.style.display = 'block';
-                }
-            }
-            
-            // 安全的动画效果
-            function initAnimations() {
-                try {
-                    // 简单的卡片悬停效果
-                    const card = document.querySelector('.card');
-                    if (card) {
-                        card.addEventListener('mouseenter', function() {
-                            this.style.transform = 'translateY(-5px)';
-                        });
-                        
-                        card.addEventListener('mouseleave', function() {
-                            this.style.transform = 'translateY(0)';
-                        });
-                    }
-                    
-                    // 按钮点击效果
-                    const buttons = document.querySelectorAll('.btn');
-                    buttons.forEach(button => {
-                        button.addEventListener('click', function(e) {
-                            // 创建涟漪效果
-                            const ripple = document.createElement('span');
-                            const rect = this.getBoundingClientRect();
-                            const size = Math.max(rect.width, rect.height);
-                            const x = e.clientX - rect.left - size / 2;
-                            const y = e.clientY - rect.top - size / 2;
-                            
-                            ripple.style.cssText = `
-                                position: absolute;
-                                width: ${size}px;
-                                height: ${size}px;
-                                border-radius: 50%;
-                                background: rgba(255, 255, 255, 0.3);
-                                left: ${x}px;
-                                top: ${y}px;
-                                pointer-events: none;
-                                transform: scale(0);
-                                animation: ripple 0.6s ease-out;
-                            `;
-                            
-                            this.style.position = 'relative';
-                            this.style.overflow = 'hidden';
-                            this.appendChild(ripple);
-                            
-                            setTimeout(() => ripple.remove(), 600);
-                        });
-                    });
-                    
-                } catch (error) {
-                    console.error('Animation error:', error);
-                    // 即使动画失败，页面仍然可用
-                }
-            }
-            
-            // 添加涟漪动画CSS
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(4);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // 初始化
-            hideLoading();
-            initAnimations();
-            
-            // 检查网络连接
-            if (!navigator.onLine) {
-                showError('You are offline. Some features may be limited.');
-            }
-            
-            // 监听网络状态变化
-            window.addEventListener('online', function() {
-                const errorEl = document.getElementById('errorMessage');
-                if (errorEl && errorEl.textContent.includes('offline')) {
-                    errorEl.style.display = 'none';
-                }
-            });
-            
-            window.addEventListener('offline', function() {
-                showError('You are offline. Some features may be limited.');
-            });
+        // 简单的错误处理
+        window.addEventListener('error', function(e) {
+            console.error('Page error:', e.message);
+        });
+
+        // 检查网络状态
+        window.addEventListener('online', function() {
+            console.log('Network connection restored');
+        });
+
+        window.addEventListener('offline', function() {
+            console.log('Network connection lost');
         });
     </script>
 </body>
